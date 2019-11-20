@@ -9,14 +9,22 @@
   <body>
     <main class="container" id="app">
       <h1 class="title">Set Timer</h1>
-      <div class="timer-wrapper">
+      <form class="timer-wrapper" @submit.prevent="startTimer">
         <div class="timer-controls">
-          <button class="start">
+          <button type="submit" class="start">
             <i
               class="start__icon"
-              height="4rem"
-              width="4rem"
+              v-show="!timerOn"
+              height="64px"
+              width="64px"
               data-feather="play-circle"
+            ></i>
+            <i
+              class="start__icon"
+              v-show="timerOn"
+              height="64px"
+              width="64px"
+              data-feather="pause-circle"
             ></i>
           </button>
         </div>
@@ -26,9 +34,9 @@
           placeholder="seconds"
           step="1"
           class="timer-input"
-          :value="restSeconds"
+          v-model="restSeconds"
         />
-      </div>
+      </form>
 
       <div class="progress"></div>
 
@@ -37,8 +45,8 @@
         <button class="sets__remove">
           <i
             class="sets__icon"
-            width="1.5rem"
-            height="1.5rem"
+            width="24px"
+            height="24px"
             data-feather="minus"
           ></i>
         </button>
@@ -47,8 +55,8 @@
         <button class="sets__add">
           <i
             class="sets__icon"
-            width="1.5rem"
-            height="1.5rem"
+            width="24px"
+            height="24px"
             data-feather="plus"
           ></i>
         </button>
@@ -59,9 +67,29 @@
       var app = new Vue({
         el: '#app',
         data: {
+          timerOn: false,
+          countdown: null,
           totalSets: 3,
           setsComplete: 0,
-          restSeconds: 30
+          restSeconds: null
+        },
+        methods: {
+          startTimer() {
+            this.timerOn = true;
+            this.startCountdown();
+          },
+          startCountdown() {
+            this.countdown = setInterval(() => {
+              this.restSeconds--;
+              if (this.restSeconds <= 0) {
+                this.endCountdown();
+              }
+            }, 1000);
+          },
+          endCountdown() {
+            this.timerOn = false;
+            clearInterval(this.countdown);
+          }
         },
         created() {
           feather.replace();
