@@ -3,17 +3,32 @@
   <head>
     <title>Vue Workout Timer</title>
     <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
+    </style>
   </head>
   <body>
-    <div id="app">
-      {{ message }}
-    </div>
+    <main id="app">
+      <div class="sets">
+        <button class="sets__remove">
+          <i data-feather="minus"></i>
+        </button>
+        <div class="sets__set"></div>
+        <button class="sets__add">
+          <i data-feather="plus"></i>
+        </button>
+      </div>
+    </main>
 
     <script>
       var app = new Vue({
         el: '#app',
         data: {
           message: 'Hello Vue!'
+        },
+        created() {
+          feather.replace();
         }
       });
     </script>
