@@ -4,19 +4,53 @@
     <title>Vue Workout Timer</title>
     <script src="https://unpkg.com/vue"></script>
     <script src="https://unpkg.com/feather-icons"></script>
-    <style>
-      @import url('https://fonts.googleapis.com/css?family=Quicksand&display=swap');
-    </style>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main id="app">
+    <main class="container" id="app">
+      <h1 class="title">Set Timer</h1>
+      <div class="timer-wrapper">
+        <div class="timer-controls">
+          <button class="start">
+            <i
+              class="start__icon"
+              height="4rem"
+              width="4rem"
+              data-feather="play-circle"
+            ></i>
+          </button>
+        </div>
+        <input
+          id="time"
+          type="number"
+          placeholder="seconds"
+          step="1"
+          class="timer-input"
+          :value="restSeconds"
+        />
+      </div>
+
+      <div class="progress"></div>
+
       <div class="sets">
+        <h3 class="sets__label">SETS</h3>
         <button class="sets__remove">
-          <i data-feather="minus"></i>
+          <i
+            class="sets__icon"
+            width="1.5rem"
+            height="1.5rem"
+            data-feather="minus"
+          ></i>
         </button>
-        <div class="sets__set"></div>
+        <span class="sets__set"></span>
+        <span class="sets__set sets__set--complete"></span>
         <button class="sets__add">
-          <i data-feather="plus"></i>
+          <i
+            class="sets__icon"
+            width="1.5rem"
+            height="1.5rem"
+            data-feather="plus"
+          ></i>
         </button>
       </div>
     </main>
@@ -25,7 +59,9 @@
       var app = new Vue({
         el: '#app',
         data: {
-          message: 'Hello Vue!'
+          totalSets: 3,
+          setsComplete: 0,
+          restSeconds: 30
         },
         created() {
           feather.replace();

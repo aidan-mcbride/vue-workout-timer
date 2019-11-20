@@ -1,0 +1,219 @@
+/* IMPORTS */
+
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300,400,500,600,700&display=swap');
+
+/* -------------------------------- */
+
+/* VARIABLES */
+
+:root {
+  --base-padding: 1rem;
+  --base-border-radius: 0.125rem;
+  --base-transition: ease all 300ms;
+  /* https://coolors.co/2a2d34-e8dab2-23231a-e26d5c-4c6085 */
+  --red: #e26d5c;
+  --black: #23231a;
+  --blue: #4c6085;
+  --beige: #e8dab2;
+  --gray: #2a2d34;
+  --white: #ffffff;
+}
+
+/* -------------------------------- */
+
+/* RESET */
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* -------------------------------- */
+
+* {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  color: var(--black);
+}
+
+html {
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem;
+}
+
+.container {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.timer-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  padding: var(--base-padding);
+  padding-left: 0;
+  background-color: var(--black);
+}
+
+.timer-wrapper::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: -100%;
+  background-color: inherit;
+}
+
+.timer__controls {
+}
+
+.start {
+  transition: var(--base-transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+  width: 4rem;
+  padding: 0.125rem;
+  border-radius: 100%;
+  border: none;
+  background: var(--white);
+  cursor: pointer;
+}
+.start:hover {
+  background-color: var(--red);
+}
+
+.timer-input {
+  margin: 0;
+  padding: 0;
+  padding-left: var(--base-padding);
+  width: 32rem;
+  max-width: 100%;
+  font-size: 4rem;
+  line-height: 1;
+  color: var(--white);
+  background-color: inherit;
+  border: 0;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.progress {
+  position: relative;
+  height: 1rem;
+  width: 100%;
+  background-color: var(--red);
+}
+
+.sets {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0.25rem 0;
+}
+
+.sets__label {
+  font-weight: 700;
+  padding-right: 0.25rem;
+}
+
+.sets__remove,
+.sets__add {
+  position: relative;
+  height: 2rem;
+  width: 2rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100%;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+.sets__add {
+  margin-left: 0.25rem;
+}
+.sets__remove::after,
+.sets__add::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  background-color: var(--red);
+  border-radius: 100%;
+  opacity: 0;
+  transition: var(--base-transition);
+}
+.sets__remove:hover::after,
+.sets__add:hover::after {
+  opacity: 0.1;
+}
+.sets__remove:active::after,
+.sets__add:active::after {
+  opacity: 1;
+  background-color: var(--red);
+}
+
+.sets__set {
+  height: 2rem;
+  width: 2rem;
+  margin-left: 0.25rem;
+  border-radius: 100%;
+  border: 0.25rem solid var(--black);
+}
+.sets__set--complete {
+  border-color: var(--red);
+  background-color: var(--red);
+}
