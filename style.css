@@ -226,3 +226,17 @@ html {
   border-color: var(--red);
   background-color: var(--red);
 }
+
+/* -------------------------------- */
+
+/* TRANSITIONS */
+
+.set-transition-enter,
+.set-transition-leave-to {
+  opacity: 0;
+}
+
+.set-transition-enter-active,
+.set-transition-leave-active {
+  transition: var(--base-transition);
+}
