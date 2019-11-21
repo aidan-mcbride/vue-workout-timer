@@ -82,11 +82,13 @@
           countdown: null,
           totalSets: 3,
           setsComplete: 0,
-          restSeconds: null
+          restSeconds: null,
+          initSeconds: null
         },
         methods: {
           startTimer() {
             this.timerOn = true;
+            this.initSeconds = this.restSeconds;
             this.startCountdown();
           },
           startCountdown() {
@@ -101,6 +103,7 @@
             clearInterval(this.countdown);
             this.timerOn = false;
             this.completeSet();
+            this.restSeconds = this.initSeconds;
           },
           addSet() {
             this.totalSets++;
