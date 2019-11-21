@@ -40,7 +40,7 @@
         />
       </form>
 
-      <div class="progress"></div>
+      <div class="progress" v-bind:style="progressStyle"></div>
 
       <div class="sets">
         <h3 class="sets__label">SETS</h3>
@@ -123,6 +123,15 @@
         computed: {
           setsRemaining() {
             return this.totalSets - this.setsComplete;
+          },
+          progressPercent() {
+            return (this.restSeconds / this.initSeconds) * 100;
+          },
+          progressStyle() {
+            return {
+              width: `${this.progressPercent}%`,
+              transform: `translateY(${this.timerOn ? 0 : -1}rem)`
+            };
           }
         },
         created() {

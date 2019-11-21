@@ -146,9 +146,11 @@ html {
 }
 
 .progress {
+  transition: var(--base-transition);
   position: relative;
   height: 1rem;
   width: 100%;
+  z-index: -1;
   background-color: var(--red);
 }
 
