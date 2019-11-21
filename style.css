@@ -240,6 +240,7 @@ html {
 }
 
 .set-transition-enter-active,
-.set-transition-leave-active {
+.set-transition-leave-active,
+.set-transition-move {
   transition: var(--base-transition);
 }
