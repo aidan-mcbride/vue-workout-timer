@@ -44,7 +44,7 @@
 
       <div class="sets">
         <h3 class="sets__label">SETS</h3>
-        <button class="sets__remove">
+        <button class="sets__remove" @click="removeSet">
           <i
             class="sets__icon"
             width="24px"
@@ -52,9 +52,7 @@
             data-feather="minus"
           ></i>
         </button>
-        <span class="sets__set"></span>
-        <span class="sets__set sets__set--complete"></span>
-        <button class="sets__add">
+        <button class="sets__add" @click="addSet">
           <i
             class="sets__icon"
             width="24px"
@@ -62,6 +60,12 @@
             data-feather="plus"
           ></i>
         </button>
+        <span
+          class="sets__set sets__set--complete"
+          v-for="set in setsComplete"
+          :key="set"
+        ></span>
+        <span class="sets__set" v-for="set in setsRemaining" :key="set"></span>
       </div>
     </main>
 
@@ -91,6 +95,17 @@
           endCountdown() {
             this.timerOn = false;
             clearInterval(this.countdown);
+          },
+          addSet() {
+            this.totalSets++;
+          },
+          removeSet() {
+            this.totalSets--;
+          }
+        },
+        computed: {
+          setsRemaining() {
+            return this.totalSets - this.setsComplete;
           }
         },
         created() {
