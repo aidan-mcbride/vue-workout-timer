@@ -91,7 +91,8 @@
           totalSets: 3,
           setsComplete: 0,
           restSeconds: null,
-          initSeconds: null
+          initSeconds: null,
+          audio: new Audio('sound.mp3')
         },
         methods: {
           toggleTimer() {
@@ -111,6 +112,7 @@
               this.restSeconds--;
             }
             if (this.restSeconds <= 0) {
+              this.playFx(); // placed here to avoid delay
               this.endCountdown();
             }
           },
@@ -120,6 +122,9 @@
             this.completeSet();
             this.countdown = null;
             this.restSeconds = this.initSeconds;
+          },
+          playFx() {
+            this.audio.play();
           },
           addSet() {
             this.totalSets++;
