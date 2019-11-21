@@ -62,7 +62,12 @@
           ></i>
         </button>
       </div>
-      <transition-group class="sets" name="sets" tag="div">
+      <transition-group
+        class="sets"
+        name="set-transition"
+        tag="div"
+        mode="out-in"
+      >
         <span
           class="sets__set sets__set--complete"
           v-for="set in setsComplete"
