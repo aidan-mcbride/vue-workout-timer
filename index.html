@@ -65,7 +65,12 @@
           v-for="set in setsComplete"
           :key="set"
         ></span>
-        <span class="sets__set" v-for="set in setsRemaining" :key="set"></span>
+        <span
+          class="sets__set"
+          v-for="set in setsRemaining"
+          :key="100 + set"
+        ></span
+        ><!-- key +100 is to avoid duplicate key with completed sets -->
       </div>
     </main>
 
@@ -93,14 +98,23 @@
             }, 1000);
           },
           endCountdown() {
-            this.timerOn = false;
             clearInterval(this.countdown);
+            this.timerOn = false;
+            this.completeSet();
           },
           addSet() {
             this.totalSets++;
           },
           removeSet() {
-            this.totalSets--;
+            if (this.totalSets > 1) {
+              this.totalSets--;
+            }
+          },
+          completeSet() {
+            if (this.setsComplete === this.totalSets) {
+              this.totalSets++;
+            }
+            this.setsComplete++;
           }
         },
         computed: {
