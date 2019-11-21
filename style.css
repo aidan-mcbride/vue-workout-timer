@@ -74,13 +74,15 @@ html {
   align-items: center;
   justify-content: center;
   padding: 4rem;
+  overflow: hidden;
 }
 
 .container {
   display: flex;
-  flex-flow: column nowrap;
-  align-items: flex-start;
-  justify-content: center;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  max-width: 40rem;
 }
 
 .title {
@@ -90,6 +92,7 @@ html {
 
 .timer-wrapper {
   display: flex;
+  flex: 1 1 0;
   flex-flow: row nowrap;
   align-items: center;
   justify-content: flex-start;
@@ -103,13 +106,10 @@ html {
   content: '';
   position: absolute;
   height: 100%;
-  width: 100%;
+  width: 1000%;
   top: 0;
-  left: -100%;
+  left: -1000%;
   background-color: inherit;
-}
-
-.timer__controls {
 }
 
 .start {
@@ -152,14 +152,19 @@ html {
   width: 100%;
   z-index: -1;
   background-color: var(--red);
+  transform-origin: top left;
 }
 
+.set-controls,
 .sets {
   display: flex;
-  flex-flow: row nowrap;
+  flex-flow: row wrap;
   align-items: center;
   justify-content: flex-start;
-  padding: 0.25rem 0;
+}
+
+.set-controls {
+  padding-top: 0.25rem;
 }
 
 .sets__label {
@@ -212,6 +217,7 @@ html {
   height: 2rem;
   width: 2rem;
   margin-left: 0.25rem;
+  margin-top: 0.25rem;
   border-radius: 100%;
   border: 0.25rem solid var(--black);
 }

@@ -43,7 +43,7 @@
 
       <div class="progress" v-bind:style="progressStyle"></div>
 
-      <div class="sets">
+      <div class="set-controls">
         <h3 class="sets__label">SETS</h3>
         <button class="sets__remove" @click="removeSet">
           <i
@@ -61,6 +61,8 @@
             data-feather="plus"
           ></i>
         </button>
+      </div>
+      <transition-group class="sets" name="sets" tag="div">
         <span
           class="sets__set sets__set--complete"
           v-for="set in setsComplete"
@@ -70,9 +72,9 @@
           class="sets__set"
           v-for="set in setsRemaining"
           :key="100 + set"
-        ></span
-        ><!-- key +100 is to avoid duplicate key with completed sets -->
-      </div>
+        ></span>
+        <!-- key +100 is to avoid duplicate key with completed sets -->
+      </transition-group>
     </main>
 
     <script>
@@ -133,13 +135,15 @@
           setsRemaining() {
             return this.totalSets - this.setsComplete;
           },
-          progressPercent() {
-            return (this.restSeconds / this.initSeconds) * 100;
+          progressRatio() {
+            return this.restSeconds / this.initSeconds;
           },
           progressStyle() {
             return {
-              width: `${this.progressPercent}%`,
-              transform: `translateY(${this.countdown !== null ? 0 : -1}rem)`,
+              // width: `${this.progressPercent}%`,
+              transform: `scaleX(${this.progressRatio || 0}) translateY(${
+                this.countdown !== null ? 0 : -1
+              }rem)`,
               backgroundColor: this.timerOn ? 'var(--red)' : 'var(--blue)'
             };
           }
