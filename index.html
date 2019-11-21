@@ -75,8 +75,11 @@
         ></span>
         <span
           class="sets__set"
-          v-for="set in setsRemaining"
+          v-for="(set, index) in setsRemaining"
           :key="100 + set"
+          :class="{
+            'sets__set--current': index === 0
+          }"
         ></span>
         <!-- key +100 is to avoid duplicate key with completed sets -->
       </transition-group>

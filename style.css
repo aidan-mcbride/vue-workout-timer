@@ -222,7 +222,7 @@ html {
   border-radius: 100%;
   border: 0.25rem solid var(--black);
 }
-.sets__set:first-of-type {
+.sets__set--current {
   border-color: var(--red);
 }
 .sets__set--complete {
