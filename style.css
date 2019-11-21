@@ -75,6 +75,7 @@ html {
   justify-content: center;
   padding: 4rem;
   overflow: hidden;
+  background-color: var(--beige);
 }
 
 .container {
