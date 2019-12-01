@@ -135,7 +135,7 @@
             this.totalSets++;
           },
           removeSet() {
-            if (this.totalSets > 1) {
+            if (this.totalSets > 1 && this.totalSets > this.setsComplete + 1) {
               this.totalSets--;
             }
           },
