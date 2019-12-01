@@ -105,6 +105,7 @@
             }
           },
           initCountdown() {
+            this.completeSet();
             this.initSeconds = this.restSeconds;
             this.countdown = setInterval(() => {
               this.decrementTime();
@@ -122,7 +123,6 @@
           endCountdown() {
             clearInterval(this.countdown);
             this.timerOn = false;
-            this.completeSet();
             this.countdown = null;
             this.restSeconds = this.initSeconds;
           },
@@ -138,10 +138,10 @@
             }
           },
           completeSet() {
+            this.setsComplete++;
             if (this.setsComplete === this.totalSets) {
               this.totalSets++;
             }
-            this.setsComplete++;
           }
         },
         computed: {
