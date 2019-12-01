@@ -72,6 +72,7 @@
           class="sets__set sets__set--complete"
           v-for="set in setsComplete"
           :key="set"
+          @click="decompleteSet"
         ></span>
         <span
           class="sets__set"
@@ -143,6 +144,9 @@
             if (this.setsComplete === this.totalSets) {
               this.totalSets++;
             }
+          },
+          decompleteSet() {
+            this.setsComplete--;
           }
         },
         computed: {
