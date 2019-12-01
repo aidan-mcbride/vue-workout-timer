@@ -61,6 +61,25 @@ img {
 
 /* -------------------------------- */
 
+/* ANIMATIONS */
+
+@keyframes current-set-rest {
+  0% {
+    border-color: var(--black);
+  }
+  25% {
+    border-color: var(--red);
+  }
+  50% {
+    border-color: var(--red);
+  }
+  100% {
+    border-color: var(--black);
+  }
+}
+
+/* -------------------------------- */
+
 * {
   font-family: 'Quicksand', sans-serif;
   font-weight: 600;
@@ -242,6 +261,12 @@ html {
 }
 .sets__set--current {
   border-color: var(--red);
+}
+.sets__set--current-rest {
+  animation-name: current-set-rest;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  animation-duration: 2s;
 }
 .sets__set--complete {
   border-color: var(--red);

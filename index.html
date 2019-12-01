@@ -79,7 +79,8 @@
           v-for="(set, index) in setsRemaining"
           :key="100 + set"
           :class="{
-            'sets__set--current': index === 0
+            'sets__set--current': index === 0,
+            'sets__set--current-rest': index === 0 && timerOn
           }"
           @click="completeSet"
         ></span>
