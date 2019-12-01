@@ -80,6 +80,7 @@
           :class="{
             'sets__set--current': index === 0
           }"
+          @click="completeSet"
         ></span>
         <!-- key +100 is to avoid duplicate key with completed sets -->
       </transition-group>
